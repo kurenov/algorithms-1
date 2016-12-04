@@ -1,12 +1,12 @@
 ###
     # Code by Olzhas Kurenov
     # Implementation of Quick Sort
-    # Running time: O(n)
+    # Average running time: O(nlog)
 ###
 
 from random import randint
 
-print '\n~~~~~~~~~n-th order statistics~~~~~~~~~\n'
+print '\n~~~~~~~~~Quick Sort Algorithm~~~~~~~~~\n'
 
 print 'Reading input file\n'
 with open('quickSort.txt') as f:
@@ -15,8 +15,6 @@ with open('quickSort.txt') as f:
 numbers = [];
 for line in lines:
     numbers.append(int(line))
-
-numberOfComparisons = 0
 
 def swap(a,i,j):
     temp = a[i]
@@ -31,7 +29,6 @@ def getPivot(start, end, random):
 
 def partitionAroundPivot(a, start, end, p):
     for i in range(start, end):
-        print p, i;
         if (p == i):
             continue;
         if a[i] < a[p] and i > p:
@@ -48,16 +45,14 @@ def partitionAroundPivot(a, start, end, p):
     return p;
 
 def QuickSort(a, start, end):
-    print a[start : end];
-    if (abs(end - start) <= 1):
+    if abs(end - start) <= 1:
         return;
-    global numberOfComparisons
-    numberOfComparisons += (end - start - 1)
     pivot = getPivot(start, end, True);
     pivot = partitionAroundPivot(a, start, end, pivot);
     QuickSort(a, start, pivot);
     QuickSort(a, pivot + 1, end);
 
+print numbers;
 QuickSort(numbers, 0, len(numbers));
 print numbers;
-print 'numberOfComparisons',numberOfComparisons
+
