@@ -22,10 +22,9 @@ def swap(a,i,j):
     a[j] = temp
 
 def getPivot(start, end, random):
-    return end-1;
     if random and start < end:
-        return randint(start, end - 1)    
-    return end - 1;
+        return randint(start, end - 1)
+    return start;
 
 def partitionAroundPivot(a, start, end, p):
     for i in range(start, end):
@@ -55,4 +54,3 @@ def QuickSort(a, start, end):
 print numbers;
 QuickSort(numbers, 0, len(numbers));
 print numbers;
-
