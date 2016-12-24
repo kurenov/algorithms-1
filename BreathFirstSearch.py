@@ -5,10 +5,9 @@
 ###
 from Queue import Queue
 
-print '\n~~~~~~~~~Karger\'s Minumum Cut algorithm~~~~~~~~~\n'
+print '\n~~~~~~~~~Breadth-First Search algorithm~~~~~~~~~\n'
 
 graph = {}
-q = Queue();
 
 with open('graph.txt') as f:
     lines = f.readlines();
@@ -27,6 +26,7 @@ def BreadthFirstSearch(g, s):
     # initialize starting vertex
     g[s]['visited'] = True
     g[s]['distance'] = 0
+    q = Queue();
     q.put(g[s])
     # loop while queue is not empty
     while not q.empty():
