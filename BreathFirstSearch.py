@@ -1,6 +1,6 @@
 ###
     # Code by Olzhas Kurenov
-    # Implementation of Breadth-First Search Algorithm
+    # Implementation of Queued Breadth-First Search Algorithm
     # Running time: O(n + m)
 ###
 from Queue import Queue
@@ -13,7 +13,7 @@ with open('graph.txt') as f:
     lines = f.readlines();
 
 for line in lines:
-    numbers = [int(x) for x in line.split()]
+    numbers = [int(x) for x in line.split()];
     graph[numbers[0] - 1] = {
         'visited': False,
         'edges': map(lambda v: v-1, numbers[1 : len(numbers)]),
@@ -24,10 +24,10 @@ print graph;
 
 def BreadthFirstSearch(g, s):
     # initialize starting vertex
-    g[s]['visited'] = True
-    g[s]['distance'] = 0
+    g[s]['visited'] = True;
+    g[s]['distance'] = 0;
     q = Queue();
-    q.put(g[s])
+    q.put(g[s]);
     # loop while queue is not empty
     while not q.empty():
         v = q.get()
@@ -39,5 +39,5 @@ def BreadthFirstSearch(g, s):
                 g[edge]['distance'] = v['distance'] + 1;
                 q.put(g[edge]);
 
-BreadthFirstSearch(graph, 0)
+BreadthFirstSearch(graph, 0);
 print 'graph', graph
