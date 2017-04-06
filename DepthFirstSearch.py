@@ -6,26 +6,25 @@
 
 print '\n~~~~~~~~~Depth-First Search algorithm~~~~~~~~~\n'
 
-graph = {}
-stack = [];
+graph = {};
 
 with open('graph.txt') as f:
     lines = f.readlines();
 
 for line in lines:
-    numbers = [int(x) for x in line.split()]
+    numbers = [int(x) for x in line.split()];
     graph[numbers[0] - 1] = {
         'visited': False,
         'edges': map(lambda v: v-1, numbers[1 : len(numbers)])
-    }
+    };
 
 print graph;
 
 def DepthFirstSearch(g, s):
-    print s
-    g[s]['visited'] = True
+    print s;
+    g[s]['visited'] = True;
     for edge in g[s]['edges']:
         if not g[edge]['visited']:
-            DepthFirstSearch(g, edge)
+            DepthFirstSearch(g, edge);
 
-DepthFirstSearch(graph, 0)
+DepthFirstSearch(graph, 0);
